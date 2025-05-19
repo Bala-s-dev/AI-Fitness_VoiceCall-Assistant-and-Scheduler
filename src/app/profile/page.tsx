@@ -6,7 +6,6 @@ import { api } from "../../../convex/_generated/api";
 import { useState } from "react";
 import ProfileHeader from "@/components/ProfileHeader";
 import NoFitnessPlan from "@/components/NoFitnessPlan";
-import CornerElements from "@/components/CornerElements";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AppleIcon, CalendarIcon, DumbbellIcon } from "lucide-react";
@@ -38,7 +37,6 @@ const ProfilePage = () => {
         <div className="space-y-8">
           {/* PLAN SELECTOR */}
           <div className="relative backdrop-blur-sm border border-border p-6">
-            <CornerElements />
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold tracking-tight">
                 <span className="text-primary">Your</span>{" "}
@@ -75,8 +73,6 @@ const ProfilePage = () => {
 
           {currentPlan && (
             <div className="relative backdrop-blur-sm border border-border rounded-lg p-6">
-              <CornerElements />
-
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                 <h3 className="text-lg font-bold">
