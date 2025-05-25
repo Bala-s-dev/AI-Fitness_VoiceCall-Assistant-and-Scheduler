@@ -18,7 +18,7 @@ const GenerateProgramPage = () => {
   const router = useRouter();
 
   const messageContainerRef = useRef<HTMLDivElement>(null);
-
+  console.log()
   // SOLUTION to get rid of "Meeting has ended" error
   useEffect(() => {
     const originalError = console.error;
@@ -36,7 +36,6 @@ const GenerateProgramPage = () => {
       // pass all other errors to the original handler
       return originalError.call(console, msg, ...args);
     };
-
     // restore original handler on unmount
     return () => {
       console.error = originalError;
