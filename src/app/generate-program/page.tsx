@@ -7,6 +7,7 @@ import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
+
 const GenerateProgramPage = () => {
   const [callActive, setCallActive] = useState(false);
   const [connecting, setConnecting] = useState(false);
@@ -19,10 +20,8 @@ const GenerateProgramPage = () => {
 
   const messageContainerRef = useRef<HTMLDivElement>(null);
   console.log();
-  // SOLUTION to get rid of "Meeting has ended" error
   useEffect(() => {
     const originalError = console.error;
-    // override console.error to ignore "Meeting has ended" errors
     console.error = function (msg, ...args) {
       if (
         msg &&
@@ -30,13 +29,10 @@ const GenerateProgramPage = () => {
           (args[0] && args[0].toString().includes('Meeting has ended')))
       ) {
         console.log('Ignoring known error: Meeting has ended');
-        return; // don't pass to original handler
+        return;
       }
-
-      // pass all other errors to the original handler
       return originalError.call(console, msg, ...args);
     };
-    // restore original handler on unmount
     return () => {
       console.error = originalError;
     };
