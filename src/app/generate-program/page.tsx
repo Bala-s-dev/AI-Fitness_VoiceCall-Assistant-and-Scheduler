@@ -46,6 +46,7 @@ const GenerateProgramPage = () => {
     }
   }, [messages]);
 
+
   // navigate user to profile page after the call ends
   useEffect(() => {
     if (callEnded) {
@@ -293,7 +294,7 @@ const GenerateProgramPage = () => {
                   </div>
                   <p className="text-foreground">
                     Your fitness program has been created! Redirecting to your
-                    profile...
+                    profile
                   </p>
                 </div>
               )}
