@@ -161,9 +161,9 @@ http.route({
       Fitness level: ${fitness_level}
       
       As a professional coach:
-      - Consider muscle group splits to avoid overtraining the same muscles on consecutive days
-      - Design exercises that match the fitness level and account for any injuries
-      - Structure the workouts to specifically target the user's fitness goal
+      - Consider muscle group splits to avoid overtraining the same muscles on consecutive days.
+      - Design exercises that match the fitness level and account for any injuries.
+      - Structure the workouts to specifically target the user's fitness goal.
       
       CRITICAL SCHEMA INSTRUCTIONS:
       - Your output MUST contain ONLY the fields specified below, NO ADDITIONAL FIELDS
