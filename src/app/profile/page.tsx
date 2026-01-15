@@ -15,7 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-
+import Vapi from '@vapi-ai/web';
 const ProfilePage = () => {
   const { user } = useUser();
   const userId = user?.id as string;
