@@ -3,7 +3,7 @@
 import { useUser } from '@clerk/nextjs';
 import { useQuery } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProfileHeader from '@/components/ProfileHeader';
 import NoFitnessPlan from '@/components/NoFitnessPlan';
 import { Button } from '@/components/ui/button';
@@ -15,14 +15,25 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+
 const ProfilePage = () => {
   const { user } = useUser();
-  const userId = user?.id as string;
+  const userId = user?.id;
 
-  const allPlans = useQuery(api.plans.getUserPlans, { userId });
+  const allPlans = useQuery(
+    api.plans.getUserPlans,
+    userId ? { userId } : 'skip',
+  );
   const [selectedPlanId, setSelectedPlanId] = useState<null | string>(null);
 
   const activePlan = allPlans?.find((plan) => plan.isActive);
+
+  // Auto-select the active plan when plans load
+  useEffect(() => {
+    if (activePlan && !selectedPlanId) {
+      setSelectedPlanId(activePlan._id);
+    }
+  }, [activePlan, selectedPlanId]);
 
   const currentPlan = selectedPlanId
     ? allPlans?.find((plan) => plan._id === selectedPlanId)
@@ -147,18 +158,18 @@ const ProfilePage = () => {
                                           </div>
                                         </div>
                                       </div>
-                                      {routine.description && (
+                                      {routine.description&& (
                                         <p className="text-sm text-muted-foreground mt-1">
                                           {routine.description}
                                         </p>
                                       )}
                                     </div>
-                                  )
+                                  ),
                                 )}
                               </div>
                             </AccordionContent>
                           </AccordionItem>
-                        )
+                        ),
                       )}
                     </Accordion>
                   </div>

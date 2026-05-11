@@ -2,7 +2,7 @@ import { defineSchema, defineTable } from 'convex/server';
 import { v } from 'convex/values';
 
 export default defineSchema({
-    users: defineTable({
+  users: defineTable({
     name: v.string(),
     email: v.string(),
     image: v.optional(v.string()),
@@ -20,14 +20,11 @@ export default defineSchema({
           routines: v.array(
             v.object({
               name: v.string(),
-              sets: v.optional(v.number()),
-              reps: v.optional(v.number()),
-              duration: v.optional(v.string()),
-              description: v.optional(v.string()),
-              exercises: v.optional(v.array(v.string())),
-            })
+              sets: v.number(),
+              reps: v.number(),
+            }),
           ),
-        })
+        }),
       ),
     }),
     dietPlan: v.object({
@@ -36,7 +33,7 @@ export default defineSchema({
         v.object({
           name: v.string(),
           foods: v.array(v.string()),
-        })
+        }),
       ),
     }),
     isActive: v.boolean(),
